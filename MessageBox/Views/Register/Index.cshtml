@@ -2,41 +2,133 @@
 @{
     Layout = null;
 }
-
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-</head>
-<body>
-    <div class="container m-5">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly"></div>
-            <label>Adınız</label>
-            <input type="text" class="form-control" asp-for="Name" />
-            <br />
-            <label>Soyadınız</label>
-            <input type="text" class="form-control" asp-for="Surname" />
-            <br />
-            <label>Kullanıcı Adınız</label>
-            <input type="text" class="form-control" asp-for="UserName" />
-            <br />
-            <label>Email</label>
-            <input type="text" class="form-control" asp-for="Email" />
-            <br />
-            <label>Şifre</label>
-            <input type="text" class="form-control" asp-for="Password" />
-            <br />
-            <label>Şifre Tekrar</label>
-            <input type="text" class="form-control" asp-for="ConfirmPassword" />
-            <br />
-            <button class="btn btn-info">Kayıt Ol</button>
-        </form>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Message Box - Kayıt Ol</title>
+    <!--favicon-->
+    <link rel="icon" href="~/layout/assets/images/favicon.ico" type="image/x-icon">
+    <!-- Bootstrap core CSS-->
+    <link href="~/layout/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- animate CSS-->
+    <link href="~/layout/assets/css/animate.css" rel="stylesheet" type="text/css" />
+    <!-- Icons CSS-->
+    <link href="~/layout/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <!-- Custom Style-->
+    <link href="~/layout/assets/css/app-style.css" rel="stylesheet" />
 
-    </div>
+</head>
+
+<body>
+
+    <!-- start loader -->
+    <div id="pageloader-overlay" class="visible incoming"><div class="loader-wrapper-outer"><div class="loader-wrapper-inner"><div class="loader"></div></div></div></div>
+    <!-- end loader -->
+    <!-- Start wrapper-->
+    <div id="wrapper">
+
+        <div class="card card-authentication1 mx-auto my-4">
+            <div class="card-body">
+                <div class="card-content p-2">
+                    <div class="text-center">
+                        <img src="~/layout/assets/images/logo-icon.png" alt="logo icon">
+                    </div>
+                    <div class="card-title text-uppercase text-center py-3">Message Box Kayıt</div>
+                    <form method="post">
+                        <div asp-validation-summary="All" class="text-danger" style="text-decoration:none;"></div>
+                        <div class="form-group">
+                            <label for="exampleInputName" class="sr-only">Adınız</label>
+                            <div class="position-relative has-icon-right">
+                                <input type="text" id="exampleInputName" class="form-control input-shadow" placeholder="Adınızı Giriniz" asp-for="Name">
+                                <div class="form-control-position">
+                                    <i class="icon-user"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName" class="sr-only">Soyadınız</label>
+                            <div class="position-relative has-icon-right">
+                                <input type="text" id="exampleInputName" class="form-control input-shadow" placeholder="Soyadınızı Giriniz" asp-for="Surname">
+                                <div class="form-control-position">
+                                    <i class="icon-user"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName" class="sr-only">Kullanıcı Adınız</label>
+                            <div class="position-relative has-icon-right">
+                                <input type="text" id="exampleInputName" class="form-control input-shadow" placeholder="Kullanıcı Adınızı Giriniz" asp-for="UserName">
+                                <div class="form-control-position">
+                                    <i class="icon-user"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmailId" class="sr-only">Mail</label>
+                            <div class="position-relative has-icon-right">
+                                <input type="text" id="exampleInputEmailId" class="form-control input-shadow" placeholder="Mail Adresinizi Giriniz" asp-for="Email">
+                                <div class="form-control-position">
+                                    <i class="icon-envelope-open"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword" class="sr-only">Şifre</label>
+                            <div class="position-relative has-icon-right">
+                                <input type="password" id="exampleInputPassword" class="form-control input-shadow" placeholder="Şifre" asp-for="Password">
+                                <div class="form-control-position">
+                                    <i class="icon-lock"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword" class="sr-only">Şifre Tekrar</label>
+                            <div class="position-relative has-icon-right">
+                                <input type="password" id="exampleInputPassword" class="form-control input-shadow" placeholder="Şifre Tekrar" asp-for="ConfirmPassword">
+                                <div class="form-control-position">
+                                    <i class="icon-lock"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="icheck-material-primary">
+                                <input type="checkbox" id="user-checkbox" checked="" />
+                                <label for="user-checkbox">Kullanım Koşullarını Okudum. Kabul Ediyorum.</label>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary btn-block waves-effect waves-light">Kayıt Ol</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card-footer text-center py-3">
+                <p class="text-dark mb-0">Zaten Hesabım Var. <a href="/Login/Index/"> Giriş Yap</a></p>
+            </div>
+        </div>
+
+        <!--Start Back To Top Button-->
+        <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+        <!--End Back To Top Button-->
+
+
+
+    </div><!--wrapper-->
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/layout/assets/js/jquery.min.js"></script>
+    <script src="~/layout/assets/js/popper.min.js"></script>
+    <script src="~/layout/assets/js/bootstrap.min.js"></script>
+
+    <!-- sidebar-menu js -->
+    <script src="~/layout/assets/js/sidebar-menu.js"></script>
+
+    <!-- Custom scripts -->
+    <script src="~/layout/assets/js/app-script.js"></script>
+
 </body>
 </html>
-

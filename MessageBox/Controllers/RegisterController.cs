@@ -1,10 +1,12 @@
 ﻿using BusinessLayer.Abstracts;
 using BusinessLayer.ValidationRules.AppUserValidationRules;
 using DTO.AppUserDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MessageBox.Controllers
 {
+    [AllowAnonymous]
     public class RegisterController : Controller
     {
         private readonly IAppUserService _appUserService;

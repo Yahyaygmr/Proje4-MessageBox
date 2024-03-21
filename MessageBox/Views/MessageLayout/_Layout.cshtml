@@ -1,0 +1,216 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Message Box - @ViewData["Title"]</title>
+    <!--favicon-->
+    <link rel="icon" href="~/layout/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="~/layout/assets/plugins/summernote/dist/summernote-bs4.css" />
+    <!-- simplebar CSS-->
+    <link href="~/layout/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
+    <!-- Bootstrap core CSS-->
+    <link href="~/layout/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- animate CSS-->
+    <link href="~/layout/assets/css/animate.css" rel="stylesheet" type="text/css" />
+    <!-- Icons CSS-->
+    <link href="~/layout/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <!-- Sidebar CSS-->
+    <link href="~/layout/assets/css/sidebar-menu.css" rel="stylesheet" />
+    <!-- Custom Style-->
+    <link href="~/layout/assets/css/app-style.css" rel="stylesheet" />
+    <!-- skins CSS-->
+    <link href="~/layout/assets/css/skins.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+    <!-- start loader -->
+    <div id="pageloader-overlay" class="visible incoming"><div class="loader-wrapper-outer"><div class="loader-wrapper-inner"><div class="loader"></div></div></div></div>
+    <!-- end loader -->
+    <!-- Start wrapper-->
+    <div id="wrapper">
+
+        <!--Start sidebar-wrapper-->
+        <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
+            <div class="brand-logo">
+                <a href="index.html">
+                    <img src="~/layout/assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+                    <h5 class="logo-text">MESSAGE BOX</h5>
+                </a>
+            </div>
+
+            <div class="user-details">
+                <div class="media align-items-center">
+                    <div class="avatar"><img class="mr-3 side-user-img" src="~/images/defaultimage.png" alt="user avatar"></div>
+                    <div class="media-body">
+                        <p>Hoşgeldiniz</p>
+                        <h6 class="side-user-name" style="color:#FDA403;">@User.Identity.Name</h6>
+                    </div>
+                </div>
+
+            </div>
+            <ul class="sidebar-menu">
+                <li class="sidebar-header">Mesaj ve İşlemler</li>
+                <li>
+                    <a href="/Message/SendMessage/" class="waves-effect">
+                        <i class="zmdi zmdi-calendar-check"></i> <span>+ Yeni Mesaj</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Message/Index/" class="waves-effect">
+                        <i class="zmdi zmdi-calendar-check"></i> <span>Tüm Mesajlar</span>
+                       
+                    </a>
+                </li>
+                <li>
+                    <a href="calendar.html" class="waves-effect">
+                        <i class="zmdi zmdi-calendar-check"></i> <span>Gelen Kutusu</span>
+                        
+                    </a>
+                </li>
+                <li>
+                    <a href="calendar.html" class="waves-effect">
+                        <i class="zmdi zmdi-calendar-check"></i> <span>Giden Kutusu</span>
+                       
+                    </a>
+                </li>
+                <li>
+                    <a href="calendar.html" class="waves-effect">
+                        <i class="zmdi zmdi-calendar-check"></i> <span>Çöp</span>
+                      
+                    </a>
+                </li>
+                <li>
+                    <a href="calendar.html" class="waves-effect">
+                        <i class="zmdi zmdi-calendar-check"></i> <span>Kullanıcı İşlemleri</span>
+                        
+                    </a>
+                </li>
+                <li>
+                    <a href="/Login/LogOut/" class="waves-effect">
+                        <i class="zmdi zmdi-calendar-check"></i> <span>Çıkış Yap</span>
+
+                    </a>
+                </li>
+           
+            </ul>
+
+        </div>
+        <!--End sidebar-wrapper-->
+        <!--Start topbar header-->
+        <header class="topbar-nav">
+            <nav id="header-setting" class="navbar navbar-expand fixed-top">
+             
+            </nav>
+        </header>
+        <!--End topbar header-->
+
+        <div class="clearfix"></div>
+
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                    @RenderBody()
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- End row -->
+                <!--start overlay-->
+                <div class="overlay toggle-menu"></div>
+                <!--end overlay-->
+            </div>
+            <!-- End container-fluid-->
+
+        </div><!--End content-wrapper-->
+        <!--Start Back To Top Button-->
+        <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+        <!--End Back To Top Button-->
+        <!--Start footer-->
+        <footer class="footer">
+            <div class="container">
+                <div class="text-center">
+                    Copyright © 2019 Dashtreme Admin
+                </div>
+            </div>
+        </footer>
+        <!--End footer-->
+        <!--start color switcher-->
+        <div class="right-sidebar">
+            <div class="switcher-icon">
+                <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
+            </div>
+            <div class="right-sidebar-content">
+
+
+                <p class="mb-0">Header Colors</p>
+                <hr>
+
+                <div class="mb-3">
+                    <button type="button" id="default-header" class="btn btn-outline-primary">Default Header</button>
+                </div>
+
+                <ul class="switcher">
+                    <li id="header1"></li>
+                    <li id="header2"></li>
+                    <li id="header3"></li>
+                    <li id="header4"></li>
+                    <li id="header5"></li>
+                    <li id="header6"></li>
+                </ul>
+
+                <p class="mb-0">Sidebar Colors</p>
+                <hr>
+
+                <div class="mb-3">
+                    <button type="button" id="default-sidebar" class="btn btn-outline-primary">Default Header</button>
+                </div>
+
+                <ul class="switcher">
+                    <li id="theme1"></li>
+                    <li id="theme2"></li>
+                    <li id="theme3"></li>
+                    <li id="theme4"></li>
+                    <li id="theme5"></li>
+                    <li id="theme6"></li>
+                </ul>
+
+            </div>
+        </div>
+        <!--end color switcher-->
+
+    </div><!--End wrapper-->
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/layout/assets/js/jquery.min.js"></script>
+    <script src="~/layout/assets/js/popper.min.js"></script>
+    <script src="~/layout/assets/js/bootstrap.min.js"></script>
+
+    <!-- simplebar js -->
+    <script src="~/layout/assets/plugins/simplebar/js/simplebar.js"></script>
+    <!-- sidebar-menu js -->
+    <script src="~/layout/assets/js/sidebar-menu.js"></script>
+
+    <!-- Custom scripts -->
+    <script src="~/layout/assets/js/app-script.js"></script>
+
+    <script src="~/layout/assets/plugins/summernote/dist/summernote-bs4.min.js"></script>
+    <script>
+        $('#summernoteEditor').summernote({
+            height: 400,
+            tabsize: 2
+        });
+    </script>
+
+</body>
+</html>

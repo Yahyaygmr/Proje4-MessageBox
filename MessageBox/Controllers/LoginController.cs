@@ -1,11 +1,13 @@
 ﻿using BusinessLayer.ValidationRules.AppUserValidationRules;
 using DTO.AppUserDtos;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MessageBox.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         private readonly SignInManager<AppUser> _signInManager;
@@ -34,10 +36,10 @@ namespace MessageBox.Controllers
                     ModelState.AddModelError("", "Geçersiz mail veya şifre");
                     return View(dto);
                 }
-                var result = await _signInManager.PasswordSignInAsync(user, dto.Password, false, false);
+                var result = await _signInManager.PasswordSignInAsync(user, dto.Password, true, false);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Register");
+                    return RedirectToAction("Index", "Message");
                 }
                 else
                 {
@@ -46,6 +48,11 @@ namespace MessageBox.Controllers
             }
            
             return View(dto);
+        }
+        public async Task<IActionResult> LogOut()
+        {
+           await _signInManager.SignOutAsync();
+            return RedirectToAction("Index");
         }
     }
 }

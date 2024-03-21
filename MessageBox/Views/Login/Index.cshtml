@@ -2,7 +2,121 @@
 @{
     Layout = null;
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Message Box - Giriş</title>
+    <!--favicon-->
+    <link rel="icon" href="~/layout/assets/images/favicon.ico" type="image/x-icon">
+    <!-- Bootstrap core CSS-->
+    <link href="~/layout/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- animate CSS-->
+    <link href="~/layout/assets/css/animate.css" rel="stylesheet" type="text/css" />
+    <!-- Icons CSS-->
+    <link href="~/layout/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <!-- Custom Style-->
+    <link href="~/layout/assets/css/app-style.css" rel="stylesheet" />
 
+</head>
+
+<body>
+
+    <!-- start loader -->
+    <div id="pageloader-overlay" class="visible incoming"><div class="loader-wrapper-outer"><div class="loader-wrapper-inner"><div class="loader"></div></div></div></div>
+    <!-- end loader -->
+    <!-- Start wrapper-->
+    <div id="wrapper">
+
+        <div class="loader-wrapper"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
+        <div class="card card-authentication1 mx-auto my-5">
+            <div class="card-body">
+                <div class="card-content p-2">
+                    <div class="text-center">
+                        <img src="~/layout/assets/images/logo-icon.png" alt="logo icon">
+                    </div>
+                    <div class="card-title text-uppercase text-center py-3">Message Box Giriş</div>
+                    <form method="post">
+                        <div asp-validation-summary="All"></div>
+                        <div class="form-group">
+                            <label for="exampleInputEmailId" class="sr-only">Mail</label>
+                            <div class="position-relative has-icon-right">
+                                <input type="text" id="exampleInputEmailId" class="form-control input-shadow" placeholder="Mail Adresinizi Giriniz" asp-for="Email">
+                                <div class="form-control-position">
+                                    <i class="icon-envelope-open"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword" class="sr-only">Şifre</label>
+                            <div class="position-relative has-icon-right">
+                                <input type="password" id="exampleInputPassword" class="form-control input-shadow" placeholder="Şifre" asp-for="Password">
+                                <div class="form-control-position">
+                                    <i class="icon-lock"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <div class="icheck-material-primary">
+                                    <input type="checkbox" id="user-checkbox" checked="" />
+                                    <label for="user-checkbox">Beni Hatırla</label>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <button class="btn btn-primary btn-block">Giriş Yap</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card-footer text-center py-3">
+                <p class="text-dark mb-0">Hesabın Yok Mu? <a href="/Register/Index/"> Kayıt Ol</a></p>
+            </div>
+        </div>
+
+        <!--Start Back To Top Button-->
+        <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+        <!--End Back To Top Button-->
+
+
+
+    </div><!--wrapper-->
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/layout/assets/js/jquery.min.js"></script>
+    <script src="~/layout/assets/js/popper.min.js"></script>
+    <script src="~/layout/assets/js/bootstrap.min.js"></script>
+
+    <!-- sidebar-menu js -->
+    <script src="~/layout/assets/js/sidebar-menu.js"></script>
+
+    <!-- Custom scripts -->
+    <script src="~/layout/assets/js/app-script.js"></script>
+
+</body>
+</html>
+
+@* 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------
 <!DOCTYPE html>
 
 <html>
@@ -28,3 +142,4 @@
     </div>
 </body>
 </html>
+ *@

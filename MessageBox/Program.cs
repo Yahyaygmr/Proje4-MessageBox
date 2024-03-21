@@ -5,6 +5,11 @@ using DataAccessLayer.Concretes.Context;
 using DataAccessLayer.Concretes.EntityFramework;
 using DataAccessLayer.Concretes.Repository;
 using EntityLayer.Concrete;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.Build.Framework;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +25,19 @@ builder.Services.AddScoped<IAppUserDal, EfAppUserDal>();
 builder.Services.AddScoped<IAppUserService, AppUserManager>();
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddMvc(config =>
+{
+    var policy = new AuthorizationPolicyBuilder()
+    .RequireAuthenticatedUser()
+    .Build();
+    config.Filters.Add(new AuthorizeFilter(policy));
+});
+builder.Services.ConfigureApplicationCookie(opt =>
+{
+    opt.LoginPath = "/Login/Index/";
+    opt.AccessDeniedPath = "/Login/Index/";
+});
+
 
 var app = builder.Build();
 
@@ -33,10 +51,11 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseAuthentication();
 
-app.UseRouting();
 
 app.UseAuthorization();
+app.UseRouting();
 
 app.MapControllerRoute(
     name: "default",
