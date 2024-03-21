@@ -1,6 +1,24 @@
+using BusinessLayer.Abstracts;
+using BusinessLayer.Concretes;
+using DataAccessLayer.Abstracts;
+using DataAccessLayer.Concretes.Context;
+using DataAccessLayer.Concretes.EntityFramework;
+using DataAccessLayer.Concretes.Repository;
+using EntityLayer.Concrete;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<ApplicationContext>();
+builder.Services.AddIdentity<AppUser, AppRole>()
+    .AddEntityFrameworkStores<ApplicationContext>();
+
+builder.Services.AddScoped<IMessageDal, EfMessageDal>();
+builder.Services.AddScoped<IMessageService, MessageManager>();
+
+builder.Services.AddScoped<IAppUserDal, EfAppUserDal>();
+builder.Services.AddScoped<IAppUserService, AppUserManager>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

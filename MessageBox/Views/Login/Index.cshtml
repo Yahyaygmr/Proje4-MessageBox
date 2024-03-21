@@ -1,0 +1,30 @@
+﻿@model DTO.AppUserDtos.LoginAppUserDto
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container m-5">
+        <form method="post">
+            <div asp-validation-summary="All"></div>
+            <br />
+            <label>Email</label>
+            <input type="text" class="form-control" asp-for="Email" />
+            <br />
+            <label>Şifre</label>
+            <input type="text" class="form-control" asp-for="Password" />
+            <br />
+            <button class="btn btn-info">Giriş Yap</button>
+        </form>
+
+    </div>
+</body>
+</html>

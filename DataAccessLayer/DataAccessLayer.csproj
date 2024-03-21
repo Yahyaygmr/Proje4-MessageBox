@@ -21,10 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Abstracts\" />
-    <Folder Include="Concretes\Context\" />
-    <Folder Include="Concretes\EntityFramework\" />
-    <Folder Include="Concretes\Repository\" />
+    <ProjectReference Include="..\DTO\DTO.csproj" />
+    <ProjectReference Include="..\EntityLayer\EntityLayer.csproj" />
   </ItemGroup>
 
 </Project>
