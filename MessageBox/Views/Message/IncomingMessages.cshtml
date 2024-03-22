@@ -4,11 +4,12 @@
     Layout = "~/Views/MessageLayout/_Layout.cshtml";
 }
 
+
 <div class="row">
     <div class="col-lg-12 col-md-8">
         <div class="row">
             <div class="col-lg-8">
-                <h3>Tüm Mesajlar</h3>
+                <h3>Gelen Mesajlar</h3>
             </div>
 
             <div class="col-lg-4">
@@ -57,8 +58,7 @@
                                                     @item.Subject
                                                 </a>
                                             </td>
-                                            <td>
-                                                <a href="/Message/StatusMakeFalse/@item.MessageId" class="icon-button-red"><i class="zmdi ti-trash"></i></a>
+                                            <td>   <button class="icon-button-red"><i class="zmdi ti-trash"></i></button>
                                                 <button class="icon-button"><i class="zmdi ti-comments"></i></button>
                                             </td>
                                             <td class="text-right">
@@ -89,7 +89,7 @@
                                                 <a href="/Message/MessageControl/@item.MessageId">@item.Subject</a>
                                             </td>
                                             <td>
-                                                <a href="/Message/StatusMakeFalse/@item.MessageId" class="icon-button-red"><i class="zmdi ti-trash"></i></a>
+                                                <button class="icon-button-red"><i class="zmdi ti-trash"></i></button>
                                                 <button class="icon-button"><i class="zmdi ti-comments"></i></button>
                                             </td>
                                             <td class="text-right">

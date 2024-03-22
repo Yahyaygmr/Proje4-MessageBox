@@ -16,3 +16,31 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.icon-button {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+.icon-button:hover {
+    color: blue;
+}
+.icon-button-red {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 7px;
+    margin-right: 7px;
+    color:red;
+}
+
+    .icon-button-red:hover {
+        color: blue;
+    }

@@ -1,8 +1,43 @@
-﻿
+﻿@model EntityLayer.Concrete.Message
 @{
     ViewData["Title"] = "Mesaj Detay";
     Layout = "~/Views/MessageLayout/_Layout.cshtml";
 }
 
-<h1>MessageDetail</h1>
+
+<div class="row">
+    <div class="col-lg-12 col-md-8">
+        <div class="card mt-3 shadow-none">
+            <div class="card-body">
+                <div class="media mb-3">
+                    <img src="~/images/defaultimage.png" class="rounded-circle mr-3 mail-img shadow" alt="media image">
+                    <div class="media-body">
+                        <span class="media-meta float-right">@Model.SendDate.ToString("dd MMMM yyyy HH:mm")</span>
+                        <h4 class="m-0">@Model.AppUser.Name @Model.AppUser.Surname</h4>
+                        <h6>Konu : @Model.Subject</h6>
+                    </div>
+                </div> <!-- media -->
+                <div class="container my-5">
+                    @Html.Raw(Model.Content)
+
+                </div>
+               
+                <hr>
+                <h6>Cevapla :</h6>
+
+                <form class="mt-3">
+                    <div class="form-group">
+                        <textarea class="form-control" rows="9" placeholder="Reply here..."></textarea>
+                    </div>
+                </form>
+
+                <div class="text-right">
+                    <button type="button" class="btn btn-primary waves-effect waves-light mt-3"><i class="fa fa-send mr-1"></i> Gönder</button>
+                </div>
+
+            </div>
+        </div> <!-- card -->
+    </div> <!-- end Col-9 -->
+
+</div>
 

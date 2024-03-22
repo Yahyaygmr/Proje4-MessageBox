@@ -23,9 +23,19 @@ namespace BusinessLayer.Concretes
             _messageDal.Delete(id);
         }
 
+        public List<Message> TGetAllMessagesListWithSender(string email)
+        {
+            return _messageDal.GetAllMessagesListWithSender(email);
+        }
+
         public Message TGetById(int id)
         {
             return _messageDal.GetById(id);
+        }
+
+        public List<Message> TGetIncomingMessagesListWithSender(string email)
+        {
+            return _messageDal.GetIncomingMessagesListWithSender(email);
         }
 
         public List<Message> TGetListAll()
@@ -33,9 +43,29 @@ namespace BusinessLayer.Concretes
             return _messageDal.GetListAll();
         }
 
+        public Message TGetMessageByIdWithSender(int id)
+        {
+            return _messageDal.GetMessageByIdWithSender(id);
+        }
+
+        public List<Message> TGetSentMessagesListWithSender(string email)
+        {
+            return _messageDal.GetSentMessagesListWithSender(email);
+        }
+
+        public List<Message> TGetTrashMessagesListWithSender(string email)
+        {
+            return _messageDal.GetTrashMessagesListWithSender(email);
+        }
+
         public void TInsert(Message entity)
         {
             _messageDal.Insert(entity);
+        }
+
+        public void TStatusMakeFalse(int id)
+        {
+            _messageDal.StatusMakeFalse(id);
         }
 
         public void TUpdate(Message entity)

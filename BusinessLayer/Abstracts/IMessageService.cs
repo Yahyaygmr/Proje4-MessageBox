@@ -9,5 +9,11 @@ namespace BusinessLayer.Abstracts
 {
     public interface IMessageService : IGenericService<Message>
     {
+        List<Message> TGetAllMessagesListWithSender(string email);
+        List<Message> TGetIncomingMessagesListWithSender(string email);
+        List<Message> TGetSentMessagesListWithSender(string email);
+        List<Message> TGetTrashMessagesListWithSender(string email);
+        Message TGetMessageByIdWithSender(int id);
+        void TStatusMakeFalse(int id);
     }
 }

@@ -28,7 +28,7 @@
     <link href="~/layout/assets/css/app-style.css" rel="stylesheet" />
     <!-- skins CSS-->
     <link href="~/layout/assets/css/skins.css" rel="stylesheet" />
-
+    <link href="~/css/site.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -62,42 +62,42 @@
                 <li class="sidebar-header">Mesaj ve İşlemler</li>
                 <li>
                     <a href="/Message/SendMessage/" class="waves-effect">
-                        <i class="zmdi zmdi-calendar-check"></i> <span>+ Yeni Mesaj</span>
+                        <i class="zmdi ti-pencil-alt"></i> <span>+ Yeni Mesaj</span>
                     </a>
                 </li>
                 <li>
                     <a href="/Message/Index/" class="waves-effect">
-                        <i class="zmdi zmdi-calendar-check"></i> <span>Tüm Mesajlar</span>
+                        <i class="zmdi ti-email"></i> <span>Tüm Mesajlar</span>
                        
                     </a>
                 </li>
                 <li>
-                    <a href="calendar.html" class="waves-effect">
-                        <i class="zmdi zmdi-calendar-check"></i> <span>Gelen Kutusu</span>
+                    <a href="/Message/IncomingMessages/" class="waves-effect">
+                        <i class="zmdi ti-arrow-down"></i> <span>Gelen Kutusu</span>
                         
                     </a>
                 </li>
                 <li>
-                    <a href="calendar.html" class="waves-effect">
-                        <i class="zmdi zmdi-calendar-check"></i> <span>Giden Kutusu</span>
+                    <a href="/Message/SentMessages/" class="waves-effect">
+                        <i class="zmdi ti-arrow-up"></i> <span>Giden Kutusu</span>
                        
                     </a>
                 </li>
                 <li>
-                    <a href="calendar.html" class="waves-effect">
-                        <i class="zmdi zmdi-calendar-check"></i> <span>Çöp</span>
+                    <a href="/Message/TrashMessages/" class="waves-effect">
+                        <i class="zmdi ti-trash"></i> <span>Çöp</span>
                       
                     </a>
                 </li>
                 <li>
                     <a href="calendar.html" class="waves-effect">
-                        <i class="zmdi zmdi-calendar-check"></i> <span>Kullanıcı İşlemleri</span>
+                        <i class="zmdi ti-user"></i> <span>Kullanıcı İşlemleri</span>
                         
                     </a>
                 </li>
                 <li>
                     <a href="/Login/LogOut/" class="waves-effect">
-                        <i class="zmdi zmdi-calendar-check"></i> <span>Çıkış Yap</span>
+                        <i class="zmdi ti-power-off"></i> <span>Çıkış Yap</span>
 
                     </a>
                 </li>
@@ -141,7 +141,7 @@
         <footer class="footer">
             <div class="container">
                 <div class="text-center">
-                    Copyright © 2019 Dashtreme Admin
+                    Copyright © @DateTime.Now.Year Tüm hakları saklıdır.| Dashtreme Admin
                 </div>
             </div>
         </footer>

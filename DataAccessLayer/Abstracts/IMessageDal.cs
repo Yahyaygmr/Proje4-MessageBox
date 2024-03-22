@@ -9,5 +9,11 @@ namespace DataAccessLayer.Abstracts
 {
     public interface IMessageDal : IGenericDal<Message>
     {
+        List<Message> GetAllMessagesListWithSender(string email);
+        List<Message> GetIncomingMessagesListWithSender(string email);
+        List<Message> GetSentMessagesListWithSender(string email);
+        List<Message> GetTrashMessagesListWithSender(string email);
+        Message GetMessageByIdWithSender(int id);
+        void StatusMakeFalse(int id);
     }
 }
