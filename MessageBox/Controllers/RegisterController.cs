@@ -28,6 +28,7 @@ namespace MessageBox.Controllers
             if (result.IsValid)
             {
                 await _appUserService.UserRegisterAsync(dto);
+
                 return RedirectToAction("Index", "Login");
             }
             else
