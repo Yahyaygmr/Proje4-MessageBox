@@ -1,15 +1,18 @@
 using BusinessLayer.Abstracts;
 using BusinessLayer.Concretes;
+using BusinessLayer.ValidationRules.AppUserValidationRules;
 using DataAccessLayer.Abstracts;
 using DataAccessLayer.Concretes.Context;
 using DataAccessLayer.Concretes.EntityFramework;
 using DataAccessLayer.Concretes.Repository;
 using EntityLayer.Concrete;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Build.Framework;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,7 +40,13 @@ builder.Services.ConfigureApplicationCookie(opt =>
     opt.LoginPath = "/Login/Index/";
     opt.AccessDeniedPath = "/Login/Index/";
 });
+builder.Services.AddFluentValidationAutoValidation(config =>
+{
+	config.DisableDataAnnotationsValidation = true;
+});
 
+builder.Services.AddValidatorsFromAssemblyContaining<LoginAppUserValidator>();
+//builder.Services.AddValidatorsFromAssemblyContaining<RegisterAppUserValidator>();
 
 var app = builder.Build();
 
@@ -59,6 +68,6 @@ app.UseRouting();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Message}/{action=Index}/{id?}");
 
 app.Run();

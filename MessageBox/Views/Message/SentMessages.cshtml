@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Mesaj Listesi";
     Layout = "~/Views/MessageLayout/_Layout.cshtml";
+    int id = 0;
 }
 
 <div class="row">
@@ -39,6 +40,7 @@
                             {
                                 @foreach (var item in Model)
                                 {
+                                    id = item.MessageId;
                                     <tr>
                                         <td>
                                             <div class="icheck-material-primary my-0">
@@ -56,8 +58,8 @@
                                             </a>
                                         </td>
                                         <td>
-                                            <button class="icon-button-red"><i class="zmdi ti-trash"></i></button>
-                                            <button class="icon-button"><i class="zmdi ti-comments"></i></button>
+                                           @*  <button class="icon-button-red"><i class="zmdi ti-trash" onclick="showSuccessPopup()"></i></button> *@
+                                            <a href="/Message/MessageControl/@item.MessageId" class="icon-button"><i class="zmdi ti-comments"></i></a>
                                         </td>
                                         <td class="text-right">
                                             @item.SendDate.ToString("HH:mm")
@@ -95,4 +97,31 @@
     </div> <!-- end Col-9 -->
 
 </div>
+
+@section Scripts {
+    <script>
+
+        function showSuccessPopup() {
+
+            Swal.fire({
+                icon: "error",
+                title: "Mesajınız Kalıcı Olarak Silinecek. Emin misiniz?",
+                showCancelButton: true,
+                confirmButtonText: "Sil",
+                cancelButtonText: `Vazgeç`
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+                    Swal.fire("Mesajınız Kalıcı Olarak Silindi!", "", "success");
+                    setTimeout(function () {
+                        window.location.href = '/Message/DeleteMessage/@id';
+                    }, 3000);
+
+                }
+
+            });
+        }
+    </script>
+
+}
 

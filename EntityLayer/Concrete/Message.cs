@@ -18,5 +18,7 @@ namespace EntityLayer.Concrete
         public DateTime? DeletedDate { get; set; }
         public bool Status { get; set; }
         public bool IsRead { get; set; }
-    }
+		public bool IsImportant { get; set; }
+		public bool IsTrash { get; set; }
+	}
 }

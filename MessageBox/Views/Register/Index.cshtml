@@ -21,6 +21,9 @@
     <link href="~/layout/assets/css/icons.css" rel="stylesheet" type="text/css" />
     <!-- Custom Style-->
     <link href="~/layout/assets/css/app-style.css" rel="stylesheet" />
+    <!-- SweetAlert CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+
 
 </head>
 
@@ -103,7 +106,7 @@
                             </div>
                         </div>
 
-                        <button class="btn btn-primary btn-block waves-effect waves-light">Kayıt Ol</button>
+                        <button class="btn btn-primary btn-block waves-effect waves-light" onclick="showSuccessPopup()">Kayıt Ol</button>
                     </form>
                 </div>
             </div>
@@ -129,6 +132,25 @@
 
     <!-- Custom scripts -->
     <script src="~/layout/assets/js/app-script.js"></script>
+    <!-- SweetAlert JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+        <script>
+
+            function showSuccessPopup() {
+                Swal.fire({
+                    title: 'Başarılı!',
+                    text: 'Kişi Kaydedildi.',
+                    icon: 'success',
+                    confirmButtonText: 'Tamam',
+                    // didClose: () => {
+                    //     // SweetAlert popup'ı kapatıldığında, Login sayfasına yönlendirme yap
+                    //     //window.location.href = '/Message/Index'; // Yönlendirilecek sayfanın URL'si
+                    // }
+                });
+            }
+        </script>
+
 
 </body>
 </html>

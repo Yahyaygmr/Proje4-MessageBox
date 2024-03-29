@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Mesaj Listesi";
     Layout = "~/Views/MessageLayout/_Layout.cshtml";
+    int id = 0;
 }
 
 
@@ -40,6 +41,7 @@
                             {
                                 @foreach (var item in Model)
                                 {
+                                    id = item.MessageId;
                                     if (item.IsRead)
                                     {
                                         <tr>
@@ -58,8 +60,10 @@
                                                     @item.Subject
                                                 </a>
                                             </td>
-                                            <td>   <button class="icon-button-red"><i class="zmdi ti-trash"></i></button>
-                                                <button class="icon-button"><i class="zmdi ti-comments"></i></button>
+                                            <td>
+                                                @*   <a href="/Message/StatusMakeFalse/@item.MessageId" class="icon-button-red"><i class="zmdi ti-trash" onclick="showSuccessPopup()"></i></a> *@
+                                                <button class="icon-button-red"><i class="zmdi ti-trash" onclick="showSuccessPopup()"></i></button>
+                                                <a href="/Message/MessageControl/@item.MessageId" class="icon-button"><i class="zmdi ti-comments"></i></a>
                                             </td>
                                             <td class="text-right">
                                                 @item.SendDate.ToString("HH:mm")
@@ -89,7 +93,7 @@
                                                 <a href="/Message/MessageControl/@item.MessageId">@item.Subject</a>
                                             </td>
                                             <td>
-                                                <button class="icon-button-red"><i class="zmdi ti-trash"></i></button>
+                                                <button class="icon-button-red"><i class="zmdi ti-trash" onclick="showSuccessPopup()"></i></button>
                                                 <button class="icon-button"><i class="zmdi ti-comments"></i></button>
                                             </td>
                                             <td class="text-right">
@@ -133,3 +137,22 @@
     </div> <!-- end Col-9 -->
 
 </div>
+
+@section Scripts {
+    <script>
+
+        function showSuccessPopup() {
+            Swal.fire({
+                title: 'Başarılı!',
+                text: 'Mesaj Çöp Kutusuna Taşındı.',
+                icon: 'warning',
+                confirmButtonText: 'Tamam',
+                didClose: () => {
+                    // SweetAlert popup'ı kapatıldığında,yönlendirme yap
+                    window.location.href = '/Message/StatusMakeFalse/@id'; // Yönlendirilecek sayfanın URL'si
+                }
+            });
+        }
+    </script>
+
+}
