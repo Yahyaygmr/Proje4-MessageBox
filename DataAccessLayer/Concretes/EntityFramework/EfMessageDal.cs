@@ -11,66 +11,77 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Concretes.EntityFramework
 {
-    public class EfMessageDal : GenericRepository<Message>, IMessageDal
-    {
-        private readonly ApplicationContext _context;
-        public EfMessageDal(ApplicationContext context) : base(context)
-        {
-            _context = context;
-        }
+	public class EfMessageDal : GenericRepository<Message>, IMessageDal
+	{
+		private readonly ApplicationContext _context;
+		public EfMessageDal(ApplicationContext context) : base(context)
+		{
+			_context = context;
+		}
 
-        public List<Message> GetIncomingMessagesListWithSender(string email)
-        {
-            return _context.Messages
-                .Include(x => x.AppUser)
-                .Where(x => x.Status == true && x.RecieverMail == email)
-                .OrderByDescending(x => x.MessageId)
-                .ToList();
-        }
+		public List<Message> GetIncomingMessagesListWithSender(string email)
+		{
+			return _context.Messages
+				.Include(x => x.AppUser)
+				.Where(x => x.IsTrash == false && x.RecieverMail == email)
+				.OrderByDescending(x => x.MessageId)
+				.ToList();
+		}
 
-        public List<Message> GetAllMessagesListWithSender(string email)
-        {
-            return _context.Messages
-                .Include(x => x.AppUser)
-                .Where(x => x.RecieverMail == email && x.Status == true)
-                .OrderByDescending(x => x.MessageId)
-                .ToList();
+		public List<Message> GetAllMessagesListWithSender(string email)
+		{
+			return _context.Messages
+				.Include(x => x.AppUser)
+				.Where(x => (x.RecieverMail == email || x.AppUser.Email == email) && x.IsTrash == false && x.Status == true)
+				.OrderByDescending(x => x.MessageId)
+				.ToList();
 
-        }
+		}
 
-        public List<Message> GetSentMessagesListWithSender(string email)
-        {
-            return _context.Messages
-                .Include(x => x.AppUser)
-                .Where(x => x.Status == true && x.AppUser.Email == email)
-                .OrderByDescending(x => x.MessageId)
-                .ToList();
-        }
+		public List<Message> GetSentMessagesListWithSender(string email)
+		{
+			return _context.Messages
+				.Include(x => x.AppUser)
+				.Where(x => x.IsTrash == false && x.AppUser.Email == email && x.Status == true)
+				.OrderByDescending(x => x.MessageId)
+				.ToList();
+		}
 
-        public List<Message> GetTrashMessagesListWithSender(string email)
-        {
-            return _context.Messages
-                .Include(x => x.AppUser)
-                .Where(x => x.RecieverMail == email && x.Status == false)
-                .OrderByDescending(x => x.MessageId)
-                .ToList();
-        }
+		public List<Message> GetTrashMessagesListWithSender(string email)
+		{
+			return _context.Messages
+				.Include(x => x.AppUser)
+				.Where(x => x.RecieverMail == email && x.IsTrash == true)
+				.OrderByDescending(x => x.MessageId)
+				.ToList();
+		}
 
-        public Message GetMessageByIdWithSender(int id)
-        {
-            return _context.Messages
-                .Include(x => x.AppUser)
-                .FirstOrDefault(x => x.MessageId == id);
-        }
+		public Message GetMessageByIdWithSender(int messageId)
+		{
+			return _context.Messages
+				.Include(x => x.AppUser)
+				.FirstOrDefault(x => x.MessageId == messageId);
+		}
+		public List<Message> GetImportantMessagesListWithSender(string email)
+		{
+			return _context.Messages
+				.Include(x => x.AppUser)
+				.Where(x => x.RecieverMail == email && x.IsImportant == true)
+				.OrderByDescending(x => x.MessageId)
+				.ToList();
+		}
 
-        public void StatusMakeFalse(int id)
-        {
-            var message = _context.Messages.Find(id);
+		public void SendTrash(int messageId)
+		{
+			var message = _context.Messages.Find(messageId);
+			if (message != null)
+			{
+				message.IsTrash = true;
+				message.DeletedDate = DateTime.Now;
 
-            message.Status = false;
-
-            _context.Messages.Update(message);
-            _context.SaveChanges();
-        }
-    }
+				_context.Messages.Update(message);
+				_context.SaveChanges();
+			}
+		}
+	}
 }

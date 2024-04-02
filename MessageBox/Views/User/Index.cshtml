@@ -1,8 +1,61 @@
 ﻿
+@model DTO.AppUserDtos.EditAppUserPasswordDto
+
 @{
     ViewData["Title"] = "Kullanıcı";
     Layout = "~/Views/MessageLayout/_Layout.cshtml";
 }
 
-<h1>Kullnıcı Bilgileri</h1>
+<div class="row">
+    <div class="col-lg-12 col-md-8" style="height:70vh;">
+        <div class="card mt-3 shadow-none">
+            <div class="card-body">
+                <h1>Kullanıcı Bilgileri</h1>
+                <form method="post">
+                    <div asp-validation-summary="All" class="col-md-12"></div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>Adı :</p>
+                                <input type="text" class="form-control" placeholder="Alıcı" asp-for="Name" readonly>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Soyadı :</p>
+                                <input type="text" class="form-control" placeholder="Konu" asp-for="Surname"readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>Kullanıcı Adı :</p>
+                                <input type="text" class="form-control" placeholder="Alıcı" asp-for="UserName" readonly>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Mail :</p>
+                                <input type="email" class="form-control" placeholder="Konu" asp-for="Email" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                           
+                            <div class="col-md-6">
+                                <p>Yeni Şifre :</p>
+                                <input type="password" class="form-control" placeholder="Alıcı" asp-for="Password">
+                            </div>
+                            <div class="col-md-6">
+                                <p>Şifre Tekrar :</p>
+                                <input type="password" class="form-control" placeholder="Konu" asp-for="ConfirmPassword">
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="form-group">
+                        <button class="btn btn-primary waves-effect waves-light m-1"><i class="fa fa-floppy-o mr-1"></i>Şifre Güncelle</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

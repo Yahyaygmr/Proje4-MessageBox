@@ -14,27 +14,39 @@
                     <div class="media-body">
                         <span class="media-meta float-right">@Model.SendDate.ToString("dd MMMM yyyy HH:mm")</span>
                         <h4 class="m-0">@Model.AppUser.Name @Model.AppUser.Surname</h4>
-                        <h6>Konu : @Model.Subject</h6>
+                        <hr />
+                        <h5 style="color:darkorange;">Konu : @Model.Subject.ToUpper()</h5>
+                       @if(Model.AppUser.UserName == User.Identity.Name)
+                            {
+                                <h6>Alıcı : @Model.RecieverMail</h6>
+                            }
+                            else
+                            {
+                                <h6>Alıcı : Ben</h6>
+                            }
                     </div>
                 </div> <!-- media -->
                 <div class="container my-5">
                     @Html.Raw(Model.Content)
 
                 </div>
-               
-                <hr>
-                <h6>Cevapla :</h6>
+                @if (Model.AppUser.UserName != User.Identity.Name)
+                {
+                    <hr>
+                    <h6>Cevapla :</h6>
 
-                <form class="mt-3">
-                    <div class="form-group">
-                        <textarea class="form-control" rows="9" placeholder="Reply here..."></textarea>
+                    <form class="mt-3">
+                        <div class="form-group">
+                            <textarea class="form-control" rows="9" placeholder="Reply here..."></textarea>
+                        </div>
+                    </form>
+
+                    <div class="text-right">
+                        <button type="button" class="btn btn-primary waves-effect waves-light mt-3"><i class="fa fa-send mr-1"></i> Gönder</button>
                     </div>
-                </form>
 
-                <div class="text-right">
-                    <button type="button" class="btn btn-primary waves-effect waves-light mt-3"><i class="fa fa-send mr-1"></i> Gönder</button>
-                </div>
-
+                }
+               
             </div>
         </div> <!-- card -->
     </div> <!-- end Col-9 -->

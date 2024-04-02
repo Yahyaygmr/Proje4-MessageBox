@@ -60,7 +60,7 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <button class="icon-button-red"><i class="zmdi ti-trash" onclick="showSuccessPopup()"></i></button>
+                                                <button class="icon-button-red"><i class="zmdi ti-trash" onclick="showSuccessPopup('@item.MessageId')"></i></button>
                                                 <a href="/Message/MessageControl/@item.MessageId" class="icon-button"><i class="zmdi ti-comments"></i></a>
                                             </td>
                                             <td class="text-right">
@@ -91,7 +91,7 @@
                                                 <a href="/Message/MessageControl/@item.MessageId">@item.Subject</a>
                                             </td>
                                             <td>
-                                                <button class="icon-button-red"><i class="zmdi ti-trash" onclick="showSuccessPopup()"></i></button>
+                                                <button class="icon-button-red"><i class="zmdi ti-trash" onclick="showSuccessPopup('@item.MessageId')"></i></button>
                                                 <a href="/Message/MessageControl/@item.MessageId" class="icon-button"><i class="zmdi ti-comments"></i></a>
                                             </td>
                                             <td class="text-right">
@@ -139,7 +139,7 @@
 @section Scripts {
     <script>
 
-        function showSuccessPopup() {
+        function showSuccessPopup(messageId) {
 
             Swal.fire({
                 icon: "error",
@@ -152,7 +152,7 @@
                 if (result.isConfirmed) {
                     Swal.fire("Mesajınız Kalıcı Olarak Silindi!", "", "success");
                     setTimeout(function () {
-                        window.location.href = '/Message/DeleteMessage/@id';
+                        window.location.href = '/Message/DeleteMessage/'+ messageId;
                     }, 3000);
 
                 }

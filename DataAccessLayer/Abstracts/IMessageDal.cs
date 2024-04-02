@@ -14,7 +14,7 @@ namespace DataAccessLayer.Abstracts
         List<Message> GetImportantMessagesListWithSender(string email);
         List<Message> GetSentMessagesListWithSender(string email);
         List<Message> GetTrashMessagesListWithSender(string email);
-        Message GetMessageByIdWithSender(int id);
-        void StatusMakeFalse(int id);
+        Message GetMessageByIdWithSender(int messageId);
+        void SendTrash(int messageId);
     }
 }

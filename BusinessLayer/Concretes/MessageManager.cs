@@ -33,7 +33,12 @@ namespace BusinessLayer.Concretes
             return _messageDal.GetById(id);
         }
 
-        public List<Message> TGetIncomingMessagesListWithSender(string email)
+		public List<Message> TGetImportantMessagesListWithSender(string email)
+		{
+            return _messageDal.GetImportantMessagesListWithSender(email);
+		}
+
+		public List<Message> TGetIncomingMessagesListWithSender(string email)
         {
             return _messageDal.GetIncomingMessagesListWithSender(email);
         }
@@ -63,10 +68,10 @@ namespace BusinessLayer.Concretes
             _messageDal.Insert(entity);
         }
 
-        public void TStatusMakeFalse(int id)
-        {
-            _messageDal.StatusMakeFalse(id);
-        }
+		public void TSendTrash(int messageId)
+		{
+			_messageDal.SendTrash(messageId);
+		}
 
         public void TUpdate(Message entity)
         {
