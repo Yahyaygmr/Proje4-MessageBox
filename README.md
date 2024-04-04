@@ -24,7 +24,8 @@
 <br>
 <h3>Video</h3>
 <br>
-------------------
+https://github.com/Yahyaygmr/MyAkademi-Proje4-MessageBox/assets/101245826/bd5e865d-5840-4eec-acd3-cf794fb9ff5f
+
 <br>
 <h2>Görseller</h2>
 <br>
